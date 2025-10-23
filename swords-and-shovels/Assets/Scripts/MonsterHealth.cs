@@ -3,17 +3,20 @@ using UnityEngine;
 public class MonsterHealth : LivingEntity
 {
     private float monsterMaxHealth = 30f;
+    [SerializeField]public int monsterDef = 5;
+
     protected override void OnEnable()
     {
         base.OnEnable();
         currentHp = monsterMaxHealth;
+        def = monsterDef;
         gameObject.SetActive(true);
     }
 
-    public override void Ondamage(float damage, Vector3 hitPosition)
+    public override void OnDamage(float damage, Vector3 hitPosition)
     {
         if (isDead) return;
 
-        base.Ondamage(damage, hitPosition);
+        base.OnDamage(damage, hitPosition);
     }
 }

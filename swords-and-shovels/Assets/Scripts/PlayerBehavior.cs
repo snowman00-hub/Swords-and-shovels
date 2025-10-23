@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks.CompilerServices; // UniTask 사용을 위한 using문
 public class PlayerBehavior : MonoBehaviour
 {
     public readonly string attack = "ATTACK";
-    public readonly string monsterTag = "MONSTER";
+    public readonly string monsterTag = "Monster";
 
     [SerializeField] private MonsterHealth monster;
 
@@ -20,7 +20,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isAttacked && isInTrigger)
         {
-            AsyncAttack();
+            //AsyncAttack();
         }
     }
 
@@ -48,7 +48,7 @@ public class PlayerBehavior : MonoBehaviour
     private void Attack(MonsterHealth monster, float damage, Vector3 hitPosition)
     {
         animator.SetBool(attack, true);
-        monster.Ondamage(attackPower, hitPosition);
+        monster.OnDamage(attackPower, hitPosition);
     }
     public void Hit()
     {
