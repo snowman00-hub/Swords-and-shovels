@@ -3,25 +3,35 @@ using UnityEngine.AI;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static readonly int hashSpeed = Animator.StringToHash("Speed");
+
     private NavMeshAgent agent;
+    private Animator animator;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        // 마우스 왼쪽 클릭 시
+        animator.SetFloat(hashSpeed, agent.velocity.magnitude);
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            // 바닥(또는 Collider)에 맞았을 때
             if (Physics.Raycast(ray, out hit))
             {
-                // 이동 목표 위치 지정
+                if (hit.collider.CompareTag(Tag.Obstacle))
+                {
+                    var obstacle = hit.collider.gameObject.GetComponent<Obstacle>();
+                    obstacle.Open();
+                    return;
+                }
+
                 agent.SetDestination(hit.point);
             }
         }
