@@ -44,6 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906a075c3fff9b3469f3e5d50428929d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useUnscaledTime: 0
-  resetCooldownOnEnable: 0
+  defaultCooldown: 0
+  cooldownFill: {fileID: 0}
   data: {fileID: 11400000, guid: b0e4f745cb456524eb3f9f886370b8ce, type: 2}
+  projectile: {fileID: 8500853317041151106, guid: b745f5503700ed14bbe30089d8a16694, type: 3}
+  castPoint: {fileID: 0}
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 8
+  hitVfx: {fileID: 0}

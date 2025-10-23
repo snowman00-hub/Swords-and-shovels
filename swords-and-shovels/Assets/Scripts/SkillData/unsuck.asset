@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f619012c9ccc4842bfa09b2756a2d26, type: 3}
-  m_Name: Fireball
+  m_Name: unsuck
   m_EditorClassIdentifier: 
-  displayName: Fireball
-  manaCost: 30
-  cooldown: 5
-  castVfxPrefab: {fileID: 2225523851222869922, guid: b745f5503700ed14bbe30089d8a16694, type: 3}
-  baseDamage: 50
-  range: 30
+  id: 
+  displayName: 
+  manaCost: 0
+  cooldown: 0
+  castVfxPrefab: {fileID: 0}
+  baseDamage: 0
+  range: 0

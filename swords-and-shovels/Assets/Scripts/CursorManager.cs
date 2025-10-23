@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    public Texture2D defaultCursor;  
-    public Texture2D doorWay;  
-    public Texture2D pointer;   
-    public Texture2D sword;   
-    public Vector2 hotspot = Vector2.zero; 
+    public Texture2D defaultCursor;
+    public Texture2D doorWay;
+    public Texture2D pointer;
+    public Texture2D sword;
+    public Vector2 hotspot = Vector2.zero;
     public CursorMode cursorMode = CursorMode.Auto;
 
     private Texture2D currentCursor;
 
     void Start()
-    {        
+    {
         Cursor.SetCursor(defaultCursor, hotspot, cursorMode);
     }
 
@@ -21,7 +21,7 @@ public class CursorManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        Texture2D targetCursor = defaultCursor; 
+        Texture2D targetCursor = defaultCursor;
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -32,6 +32,10 @@ public class CursorManager : MonoBehaviour
             else if (hit.collider.CompareTag(Tag.Doorway))
             {
                 targetCursor = doorWay;
+            }
+            else if (hit.collider.CompareTag(Tag.Monster))
+            {
+                targetCursor = sword;
             }
         }
 
@@ -45,6 +49,13 @@ public class CursorManager : MonoBehaviour
     {
         Cursor.SetCursor(texture, hotspot, cursorMode);
         currentCursor = texture;
+    }
+    public bool GetCursor()
+    {
+        if (currentCursor == sword)
+            return true;
+
+        return false;
     }
 
     void OnDisable()

@@ -9,11 +9,13 @@ public class PlayerBehavior : MonoBehaviour
     public readonly string attack = "ATTACK";
     public readonly string monsterTag = "Monster";
 
+
     [SerializeField] private MonsterHealth monster;
 
     private float attackPower = 10;
     private bool isAttacked = false;
     private bool isInTrigger = false;
+
     private Animator animator;
 
     private void Update()

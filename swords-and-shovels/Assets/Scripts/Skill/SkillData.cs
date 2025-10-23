@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AreaSkillData", menuName = "Scriptable Objects/SkillData")]
+[CreateAssetMenu(fileName = "SkillData", menuName = "Scriptable Objects/SkillData")]
 public class SkillData : SkillHeaderData
 {
     [Header("AreaSkill Params")]

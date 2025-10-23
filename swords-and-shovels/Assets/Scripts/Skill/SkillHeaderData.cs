@@ -3,7 +3,6 @@ using UnityEngine;
 public abstract class SkillHeaderData : ScriptableObject
 {
     [Header("Identity")]
-    public string id;
     public string displayName;
 
     [Header("Costs/Cooldown")]

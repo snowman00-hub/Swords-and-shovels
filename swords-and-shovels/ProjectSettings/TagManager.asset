@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Monster
   - Character
+  - MONSTER
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Monster
   - Water
   - UI
-  - Character
+  - Player
   - 
   - 
   - 
