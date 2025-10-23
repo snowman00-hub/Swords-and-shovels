@@ -86,7 +86,7 @@ public class MonsterBehavior : MonoBehaviour
             animator.SetTrigger(Attack); // 트리거로 변경
             Hit();
             await UniTask.Delay(TimeSpan.FromSeconds(attackInterval));
-            //animator.SetBool(Attack, false);
+            animator.SetBool(Attack, false);
         }
     } 
 
