@@ -1,8 +1,8 @@
-using UnityEngine;
+using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.CompilerServices; 
 using System;
 using System.Collections;
-using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.CompilerServices; // UniTask ����� ���� using��
+using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class PlayerBehavior : MonoBehaviour
     private float attackPower = 10;
     private bool isAttacked = false;
     private bool isInTrigger = false;
+    private float attackRange = 2f;
     private Animator animator;
 
     private void Update()
@@ -21,9 +22,17 @@ public class PlayerBehavior : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && !isAttacked && isInTrigger)
         {
             FindNearestMonster();
-            if(currentTarget!=null && !currentTarget.isDead)
+            if (currentTarget != null && !currentTarget.isDead)
             {
-                AsyncAttack();
+                float distanceToTarget = Vector3.Distance(transform.position, currentTarget.transform.position);
+                if (distanceToTarget <= attackRange)
+                {
+                    AsyncAttack().Forget();
+                }
+                else
+                {
+                    Debug.Log("타겟이 공격 범위를 벗어났습니다!");
+                }
             }
         }
     }
@@ -35,11 +44,11 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(monsterTag))
+        if (other.CompareTag(monsterTag))
         {
             isInTrigger = true;
             MonsterHealth monster = other.GetComponent<MonsterHealth>();
-            if(monster != null && !monster.isDead)
+            if (monster != null && !monster.isDead)
             {
                 currentTarget = monster;
             }
@@ -51,7 +60,7 @@ public class PlayerBehavior : MonoBehaviour
         if (other.CompareTag(monsterTag))
         {
             MonsterHealth monster = other.GetComponent<MonsterHealth>();
-            if(monster == currentTarget)
+            if (monster == currentTarget)
             {
                 currentTarget = null;
             }
@@ -65,15 +74,15 @@ public class PlayerBehavior : MonoBehaviour
         MonsterHealth nearestMonster = null;
         float nearestDistance = float.MaxValue;
 
-        foreach(GameObject monsterObj in monsters)
+        foreach (GameObject monsterObj in monsters)
         {
-            if(!monsterObj.activeInHierarchy) continue;
+            if (!monsterObj.activeInHierarchy) continue;
 
             MonsterHealth monster = monsterObj.GetComponent<MonsterHealth>();
-            if(monster == null || monster.isDead) continue;
+            if (monster == null || monster.isDead) continue;
 
             float distance = Vector3.Distance(transform.position, monsterObj.transform.position);
-            if(distance < nearestDistance)
+            if (distance <= attackRange && distance < nearestDistance)
             {
                 nearestDistance = distance;
                 nearestMonster = monster;
@@ -86,10 +95,10 @@ public class PlayerBehavior : MonoBehaviour
     {
         GameObject[] monsters = GameObject.FindGameObjectsWithTag(monsterTag);
         bool hasActiveMonster = false;
-        
-        foreach(var monsterObj in monsters)
+
+        foreach (var monsterObj in monsters)
         {
-            if(!monsterObj.activeInHierarchy) continue;
+            if (!monsterObj.activeInHierarchy) continue;
 
             MonsterHealth monster = monsterObj.GetComponent<MonsterHealth>();
             if (monster != null && !monster.isDead)
@@ -115,7 +124,7 @@ public class PlayerBehavior : MonoBehaviour
     }
     public void Hit()
     {
-        if(currentTarget != null && !currentTarget.isDead)
+        if (currentTarget != null && !currentTarget.isDead)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -131,8 +140,15 @@ public class PlayerBehavior : MonoBehaviour
 
     private async UniTaskVoid AsyncAttack()
     {
-        isAttacked = true;      
-
+        isAttacked = true;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector3 lookTarget = hit.point;
+            lookTarget.y = transform.position.y;
+            transform.LookAt(lookTarget);
+        }
         Attack();
 
         await AttackAnimationDelay();
