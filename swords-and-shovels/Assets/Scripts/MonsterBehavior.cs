@@ -9,7 +9,8 @@ public class MonsterBehavior : MonoBehaviour
 {
     public readonly string playerTag = "Player";
     public readonly string Attack = "ATTACK";
-    public readonly string Run = "RUN";
+    public readonly string Speed = "Speed";
+
 
     private PlayerHealth player;
     private MonsterHealth monsterHealth;
@@ -83,10 +84,10 @@ public class MonsterBehavior : MonoBehaviour
     {
         while (isInTrigger && player != null && !player.isDead && monsterHealth != null && !monsterHealth.isDead)
         {
-            animator.SetTrigger(Attack); // 트리거로 변경
+            animator.SetFloat(Speed, 0f); 
+            animator.SetTrigger(Attack);
             Hit();
             await UniTask.Delay(TimeSpan.FromSeconds(attackInterval));
-            animator.SetBool(Attack, false);
         }
     } 
 
@@ -105,11 +106,13 @@ public class MonsterBehavior : MonoBehaviour
                 else if (distanceToPlayer > detectedRange)
                 {
                     isMovingToPlayer = false;
-                }                
+                    animator.SetFloat(Speed, 0f); 
+                }
             }
             else
             {
                 isMovingToPlayer= false;
+                animator.SetFloat(Speed, 0f); 
             }
             await UniTask.Delay(100);
         }
@@ -121,7 +124,7 @@ public class MonsterBehavior : MonoBehaviour
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
             direction.y = 0;
-            animator.SetTrigger(Run);
+            animator.SetFloat(Speed, 1f); 
 
             transform.position += direction * moveSpeed * Time.deltaTime;
 
