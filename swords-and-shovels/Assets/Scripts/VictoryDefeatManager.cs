@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using System;
 using TMPro;
 using UnityEngine;
@@ -16,11 +16,13 @@ public class VictoryDefeatManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        diePanel.alpha = 0f;
+        victoryPanel.alpha = 0f;
     }
 
     private void Update()
     {
-        // �׽�Ʈ �ڵ�
+        // 테스트 코드
         if(Input.GetKeyDown(KeyCode.J))
         {
             Defeat();
@@ -60,4 +62,5 @@ public class VictoryDefeatManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
+
 }
