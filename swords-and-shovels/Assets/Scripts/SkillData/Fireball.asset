@@ -16,6 +16,6 @@ MonoBehaviour:
   displayName: Fireball
   manaCost: 30
   cooldown: 5
-  castVfxPrefab: {fileID: 0}
+  castVfxPrefab: {fileID: 4338741358457358868, guid: 8ae2434c24e0a2849aae40ed5ae2845e, type: 3}
   baseDamage: 50
   range: 30

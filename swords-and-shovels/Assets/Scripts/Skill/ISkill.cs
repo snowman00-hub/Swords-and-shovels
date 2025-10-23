@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface ISkill
 {
-    bool TryCast(IMana mana);
+    bool TryCast(Mana mana, SkillData data);
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1008785546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4278916805115688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: R_Wrist_Jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,9 +75,13 @@ GameObject:
   - component: {fileID: 95401923652868456}
   - component: {fileID: 3907765742706039833}
   - component: {fileID: 7989840460008660657}
+  - component: {fileID: 4648827939907931820}
+  - component: {fileID: 2822835962831579901}
   - component: {fileID: 1290738226054682211}
   - component: {fileID: 1472351822597944708}
-  m_Layer: 0
+  - component: {fileID: 3614612334805477853}
+  - component: {fileID: 19143063082812809}
+  m_Layer: 6
   m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -135,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132d817ccd0bced4ab634be062c895b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerdef: 5
 --- !u!114 &7989840460008660657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +153,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 0}
+--- !u!114 &4648827939907931820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644408783840310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2312333ea4d1f24c9b124485d197abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door1: {fileID: 0}
+  door2: {fileID: 0}
+--- !u!114 &2822835962831579901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644408783840310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853b3f70b3b38fc4682f487334a4980c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 100
+  currentMana: 100
 --- !u!54 &1290738226054682211
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -198,6 +231,42 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.96, z: 0}
+--- !u!195 &3614612334805477853
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644408783840310}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.3
+  m_Speed: 4
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 180
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &19143063082812809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644408783840310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4db5ffde63f624199ba3dab7abc92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMana: {fileID: 2822835962831579901}
+  fireball: {fileID: 2420368914244221880, guid: 8ae2434c24e0a2849aae40ed5ae2845e, type: 3}
 --- !u!1 &1651103941662380
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4422347394619648}
   - component: {fileID: 137708529797641888}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DwarfHero_Model_Low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
