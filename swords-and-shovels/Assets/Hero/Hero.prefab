@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220fab747ffd2f245a977753ad93670d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 0}
+  monster: {fileID: 7262130013782845728, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
 --- !u!54 &1290738226054682211
 Rigidbody:
   m_ObjectHideFlags: 0

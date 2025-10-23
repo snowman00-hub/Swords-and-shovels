@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks.CompilerServices; // UniTask 사용을 위한 using문
 public class PlayerBehavior : MonoBehaviour
 {
     public readonly string attack = "ATTACK";
-    public readonly string monsterTag = "MONSTER";
+    public readonly string monsterTag = "Monster";
 
     [SerializeField] private MonsterHealth monster;
 
