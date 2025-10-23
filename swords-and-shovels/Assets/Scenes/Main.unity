@@ -882,12 +882,21 @@ MonoBehaviour:
   - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
   - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
   - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
-  - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
-  - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
-  - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
-  - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
-  - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
-  - {fileID: 1880194204201268, guid: ef613d77160d9a24f891c787d244dd90, type: 3}
+  spawnPositions:
+  - {x: 0, y: 0, z: -40}
+  - {x: 0, y: -0.857, z: -14}
+  - {x: -7, y: -0.857, z: -14}
+  - {x: 8, y: -0.857, z: -14}
+  - {x: 0, y: -0.857, z: -6.5}
+  - {x: 8, y: -0.857, z: -6.5}
+  - {x: 0, y: -0.857, z: 1.5}
+  - {x: 0, y: -0.857, z: 9.5}
+  - {x: -8, y: -0.857, z: 10}
+  - {x: 8, y: -0.857, z: 10}
+  - {x: 0, y: -0.857, z: 18}
+  - {x: -8, y: -0.857, z: 18}
+  - {x: 8, y: -0.857, z: 18}
+  - {x: 0, y: -0.857, z: 26}
 --- !u!4 &1394410166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 487105665190321747, guid: 5bd2b2494c0eed644a664c81e91b3a5f, type: 3}

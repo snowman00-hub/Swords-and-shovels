@@ -8,6 +8,7 @@ public class MonsterBehavior : MonoBehaviour
     public readonly string playerTag = "Player";
 
     private PlayerHealth player;
+    private MonsterHealth monsterHealth;
 
     private float attackPower = 10;
     private float attackInterval = 1f;
@@ -19,6 +20,10 @@ public class MonsterBehavior : MonoBehaviour
         if (player == null)
         {
             player = FindObjectOfType<PlayerHealth>();
+        }
+        if (monsterHealth == null)
+        {
+            monsterHealth = GetComponent<MonsterHealth>();
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -62,13 +67,11 @@ public class MonsterBehavior : MonoBehaviour
 
     private async UniTaskVoid AsyncAttack()
     {
-        while(isInTrigger && player != null && !player.isDead)
+        while (isInTrigger && player != null && !player.isDead && monsterHealth != null && !monsterHealth.isDead)
         {
             Hit();
             await UniTask.Delay(TimeSpan.FromSeconds(attackInterval));
         }
-    }
-    
-
+    } 
 
 }
