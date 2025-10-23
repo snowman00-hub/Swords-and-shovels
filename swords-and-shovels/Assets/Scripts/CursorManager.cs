@@ -33,6 +33,10 @@ public class CursorManager : MonoBehaviour
             {
                 targetCursor = doorWay;
             }
+            else if (hit.collider.CompareTag(Tag.Monster))
+            {
+                targetCursor = sword;
+            }
         }
 
         if (currentCursor != targetCursor)
