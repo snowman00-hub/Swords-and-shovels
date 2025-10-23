@@ -17,8 +17,10 @@ public class LivingEntity : MonoBehaviour, IDamageable
         if(currentHp <= 0)
         {
             currentHp = 0;
-            gameObject.SetActive(false);
+            gameObject.SetActive(false);            
             isDead = true;
         }
     }
+
+
 }

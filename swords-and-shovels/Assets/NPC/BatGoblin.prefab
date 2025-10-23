@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d507cde4a91b1604292d1ac6c6863c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBehavior: {fileID: 7989840460008660657, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
 --- !u!54 &1968747603781188307
 Rigidbody:
   m_ObjectHideFlags: 0
