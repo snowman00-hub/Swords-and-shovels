@@ -125,7 +125,7 @@ public class PlayerBehavior : MonoBehaviour
             {
                 hitPosition = hit.point;
             }
-            currentTarget.Ondamage(attackPower, hitPosition);
+            currentTarget.OnDamage(attackPower, hitPosition);
         }
     }
 

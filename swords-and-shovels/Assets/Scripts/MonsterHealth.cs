@@ -18,11 +18,11 @@ public class MonsterHealth : LivingEntity
         gameObject.SetActive(true);
     }
 
-    public override void Ondamage(float damage, Vector3 hitPosition)
+    public override void OnDamage(float damage, Vector3 hitPosition)
     {
         if (isDead) return;
 
-        base.Ondamage(damage, hitPosition);
+        base.OnDamage(damage, hitPosition);
 
         if (isDead && playerBehavior != null)
         {

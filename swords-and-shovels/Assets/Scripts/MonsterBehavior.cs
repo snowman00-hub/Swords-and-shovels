@@ -8,9 +8,11 @@ using UnityEngine;
 public class MonsterBehavior : MonoBehaviour
 {
     public readonly string playerTag = "Player";
+    public readonly string Attack = "ATTACK";
 
     private PlayerHealth player;
     private MonsterHealth monsterHealth;
+    private Animator animator;
 
     private float attackPower = 10;
     private float attackInterval = 1f;
@@ -20,7 +22,10 @@ public class MonsterBehavior : MonoBehaviour
     private float moveSpeed = 5f;
     private float stopDistance = 2f;
 
-
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void OnEnable()
     {
         if (player == null)
@@ -69,7 +74,7 @@ public class MonsterBehavior : MonoBehaviour
             {
                 hitPosition = hit.point;
             }
-            player.Ondamage(attackPower, hitPosition);
+            player.OnDamage(attackPower, hitPosition);
             Debug.Log("플레이어 공격받음");
         }
     }
@@ -78,8 +83,11 @@ public class MonsterBehavior : MonoBehaviour
     {
         while (isInTrigger && player != null && !player.isDead && monsterHealth != null && !monsterHealth.isDead)
         {
+            Debug.Log($"공격 루프: isInTrigger={isInTrigger}, player.isDead={player.isDead}, monsterHealth.isDead={monsterHealth.isDead}");
+            animator.SetTrigger(Attack); // 트리거로 변경
             Hit();
             await UniTask.Delay(TimeSpan.FromSeconds(attackInterval));
+            animator.SetBool(Attack, false);
         }
     } 
 
