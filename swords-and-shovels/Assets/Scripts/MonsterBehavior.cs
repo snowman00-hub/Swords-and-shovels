@@ -9,6 +9,7 @@ public class MonsterBehavior : MonoBehaviour
 {
     public readonly string playerTag = "Player";
     public readonly string Attack = "ATTACK";
+    public readonly string Run = "RUN";
 
     private PlayerHealth player;
     private MonsterHealth monsterHealth;
@@ -75,7 +76,6 @@ public class MonsterBehavior : MonoBehaviour
                 hitPosition = hit.point;
             }
             player.OnDamage(attackPower, hitPosition);
-            Debug.Log("플레이어 공격받음");
         }
     }
 
@@ -83,11 +83,10 @@ public class MonsterBehavior : MonoBehaviour
     {
         while (isInTrigger && player != null && !player.isDead && monsterHealth != null && !monsterHealth.isDead)
         {
-            Debug.Log($"공격 루프: isInTrigger={isInTrigger}, player.isDead={player.isDead}, monsterHealth.isDead={monsterHealth.isDead}");
             animator.SetTrigger(Attack); // 트리거로 변경
             Hit();
             await UniTask.Delay(TimeSpan.FromSeconds(attackInterval));
-            animator.SetBool(Attack, false);
+            //animator.SetBool(Attack, false);
         }
     } 
 
@@ -121,7 +120,8 @@ public class MonsterBehavior : MonoBehaviour
         if (player != null && isMovingToPlayer && !isInTrigger)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            direction.y = 0; 
+            direction.y = 0;
+            animator.SetTrigger(Run);
 
             transform.position += direction * moveSpeed * Time.deltaTime;
 
