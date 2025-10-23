@@ -8,15 +8,23 @@ public class PlayerMove : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
+    private bool isMoveEvent = false;
+
+    public Transform door1;
+    public Transform door2;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    private void Update()
     {
         animator.SetFloat(hashSpeed, agent.velocity.magnitude);
+
+        if (isMoveEvent)
+            return;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -29,6 +37,15 @@ public class PlayerMove : MonoBehaviour
                 {
                     var obstacle = hit.collider.gameObject.GetComponent<Obstacle>();
                     obstacle.Open();
+                    return;
+                }
+
+                if(hit.collider.CompareTag(Tag.Doorway))
+                {
+                    float dist1 = Vector3.Distance(transform.position, door1.position);
+                    float dist2 = Vector3.Distance(transform.position, door2.position);
+                    Transform fartherDoor = (dist1 > dist2) ? door1 : door2;
+                    agent.SetDestination(fartherDoor.position);
                     return;
                 }
 
