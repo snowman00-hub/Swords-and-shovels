@@ -1,28 +1,39 @@
-using UnityEngine;
+using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.CompilerServices; 
 using System;
 using System.Collections;
-using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.CompilerServices; // UniTask »ç¿ëÀ» À§ÇÑ using¹®
+using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
     public readonly string attack = "ATTACK";
     public readonly string monsterTag = "Monster";
 
-
-    [SerializeField] private MonsterHealth monster;
+    private MonsterHealth currentTarget;
 
     private float attackPower = 10;
     private bool isAttacked = false;
     private bool isInTrigger = false;
-
+    private float attackRange = 2f;
     private Animator animator;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isAttacked && isInTrigger)
+        if (Input.GetMouseButtonDown(1) && !isAttacked && isInTrigger)
         {
-            //AsyncAttack();
+            FindNearestMonster();
+            if (currentTarget != null && !currentTarget.isDead)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, currentTarget.transform.position);
+                if (distanceToTarget <= attackRange)
+                {
+                    AsyncAttack().Forget();
+                }
+                else
+                {
+                    Debug.Log("íƒ€ê²Ÿì´ ê³µê²© ë²”ìœ„ë¥¼ ë²—ì–´ë‚¬ìŠµë‹ˆë‹¤!");
+                }
+            }
         }
     }
 
@@ -33,9 +44,14 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(monsterTag))
+        if (other.CompareTag(monsterTag))
         {
             isInTrigger = true;
+            MonsterHealth monster = other.GetComponent<MonsterHealth>();
+            if (monster != null && !monster.isDead)
+            {
+                currentTarget = monster;
+            }
         }
     }
 
@@ -43,17 +59,83 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (other.CompareTag(monsterTag))
         {
-            isInTrigger = false;
+            MonsterHealth monster = other.GetComponent<MonsterHealth>();
+            if (monster == currentTarget)
+            {
+                currentTarget = null;
+            }
+            CheckForRemainingMonsters();
         }
     }
 
-    private void Attack(MonsterHealth monster, float damage, Vector3 hitPosition)
+    private void FindNearestMonster()
+    {
+        GameObject[] monsters = GameObject.FindGameObjectsWithTag(monsterTag);
+        MonsterHealth nearestMonster = null;
+        float nearestDistance = float.MaxValue;
+
+        foreach (GameObject monsterObj in monsters)
+        {
+            if (!monsterObj.activeInHierarchy) continue;
+
+            MonsterHealth monster = monsterObj.GetComponent<MonsterHealth>();
+            if (monster == null || monster.isDead) continue;
+
+            float distance = Vector3.Distance(transform.position, monsterObj.transform.position);
+            if (distance <= attackRange && distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestMonster = monster;
+            }
+        }
+        currentTarget = nearestMonster;
+    }
+
+    private void CheckForRemainingMonsters()
+    {
+        GameObject[] monsters = GameObject.FindGameObjectsWithTag(monsterTag);
+        bool hasActiveMonster = false;
+
+        foreach (var monsterObj in monsters)
+        {
+            if (!monsterObj.activeInHierarchy) continue;
+
+            MonsterHealth monster = monsterObj.GetComponent<MonsterHealth>();
+            if (monster != null && !monster.isDead)
+            {
+                float distance = Vector3.Distance(transform.position, monsterObj.transform.position);
+                if (distance <= GetComponent<Collider>().bounds.size.magnitude)
+                {
+                    hasActiveMonster = true;
+                    break;
+                }
+            }
+        }
+        isInTrigger = hasActiveMonster;
+    }
+    public void OnMonsterDead()
+    {
+        isInTrigger = false;
+        CheckForRemainingMonsters();
+    }
+    private void Attack()
     {
         animator.SetBool(attack, true);
-        monster.OnDamage(attackPower, hitPosition);
     }
     public void Hit()
     {
+        if (currentTarget != null && !currentTarget.isDead)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Vector3 hitPosition = transform.position;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                hitPosition = hit.point;
+            }
+            currentTarget.OnDamage(attackPower, hitPosition);
+        }
     }
 
     private async UniTaskVoid AsyncAttack()
@@ -61,15 +143,16 @@ public class PlayerBehavior : MonoBehaviour
         isAttacked = true;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Vector3 hitPosition = transform.position;
-
         if (Physics.Raycast(ray, out hit))
         {
-            hitPosition = hit.point;
+            Vector3 lookTarget = hit.point;
+            lookTarget.y = transform.position.y;
+            transform.LookAt(lookTarget);
         }
+        Attack();
 
-        Attack(monster, attackPower, hitPosition);
         await AttackAnimationDelay();
+
         isAttacked = false;
     }
 

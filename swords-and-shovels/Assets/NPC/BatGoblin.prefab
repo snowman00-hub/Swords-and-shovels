@@ -104,9 +104,10 @@ GameObject:
   - component: {fileID: 7262130013782845728}
   - component: {fileID: 1968747603781188307}
   - component: {fileID: 7905284899052508733}
+  - component: {fileID: 7919771577894404785}
   m_Layer: 0
   m_Name: BatGoblin
-  m_TagString: MONSTER
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d507cde4a91b1604292d1ac6c6863c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBehavior: {fileID: 7989840460008660657, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
 --- !u!54 &1968747603781188307
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -183,7 +185,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -211,3 +213,15 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.92, z: 0}
+--- !u!114 &7919771577894404785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880194204201268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888734e4fa880de4aac46d803b361cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

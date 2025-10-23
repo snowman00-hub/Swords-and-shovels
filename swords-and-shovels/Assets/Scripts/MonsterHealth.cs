@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class MonsterHealth : LivingEntity
 {
+    [SerializeField] private PlayerBehavior playerBehavior;
+
     private float monsterMaxHealth = 30f;
-    [SerializeField]public int monsterDef = 5;
 
     protected override void OnEnable()
     {
         base.OnEnable();
         currentHp = monsterMaxHealth;
-        def = monsterDef;
+
+        if (playerBehavior == null)
+        {
+            playerBehavior = FindObjectOfType<PlayerBehavior>();
+        }
         gameObject.SetActive(true);
     }
 
@@ -18,5 +23,11 @@ public class MonsterHealth : LivingEntity
         if (isDead) return;
 
         base.OnDamage(damage, hitPosition);
+        DamagePopupManager.Instance.ShowDamage(hitPosition, Mathf.FloorToInt(damage));
+
+        if (isDead && playerBehavior != null)
+        {
+            playerBehavior.OnMonsterDead();
+        }
     }
 }

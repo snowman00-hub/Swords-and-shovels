@@ -21,6 +21,13 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        // 테스트 코드
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            transform.position = new Vector3(-0.8f, -0.8f, 18f);
+        }
+        //
+
         animator.SetFloat(hashSpeed, agent.velocity.magnitude);
 
         if (isMoveEvent)
