@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HardFloor
   - Doorway
+  - MONSTER
   - Obstacle
   layers:
   - Default
