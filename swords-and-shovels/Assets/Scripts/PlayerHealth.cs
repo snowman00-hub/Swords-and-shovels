@@ -12,11 +12,11 @@ public class PlayerHealth : LivingEntity
         currentMp = playerMaxMp;
     }
 
-    public override void Ondamage(float damage, Vector3 hitPosition)
+    public override void OnDamage(float damage, Vector3 hitPosition)
     {
         if (isDead) return;
 
-        base.Ondamage(damage, hitPosition);
-        DamagePopupManager.Instance.ShowDamage(hitPosition, Mathf.FloorToInt(damage));
+        base.OnDamage(damage, hitPosition);
+		DamagePopupManager.Instance.ShowDamage(hitPosition, Mathf.FloorToInt(damage));
     }
 }

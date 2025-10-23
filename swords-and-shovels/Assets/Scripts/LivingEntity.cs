@@ -11,15 +11,17 @@ public class LivingEntity : MonoBehaviour, IDamageable
         isDead = false;
     }
 
-    public virtual void Ondamage(float damage, Vector3 hitPosition)
+    public virtual void OnDamage(float damage, Vector3 hitPosition)
     {
         currentHp -= damage;
         if(currentHp <= 0)
         {
             currentHp = 0;
-            gameObject.SetActive(false);
+            gameObject.SetActive(false);            
             isDead = true;
             VictoryDefeatManager.Instance.Defeat();
         }
     }
+
+
 }
