@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4591444548809694}
   - component: {fileID: 137795354575275260}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: goblin_low2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1968747603781188307}
   - component: {fileID: 7905284899052508733}
   - component: {fileID: 7919771577894404785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BatGoblin
   m_TagString: Monster
   m_Icon: {fileID: 0}

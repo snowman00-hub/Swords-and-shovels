@@ -80,6 +80,8 @@ GameObject:
   - component: {fileID: 1472351822597944708}
   - component: {fileID: 2749278151181716238}
   - component: {fileID: 1551492257885445192}
+  - component: {fileID: 1509136838308636951}
+  - component: {fileID: 5789458155175547668}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -138,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132d817ccd0bced4ab634be062c895b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
   playerdef: 5
 --- !u!114 &7989840460008660657
 MonoBehaviour:
@@ -237,6 +240,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door1: {fileID: 0}
   door2: {fileID: 0}
+--- !u!114 &1509136838308636951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644408783840310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4db5ffde63f624199ba3dab7abc92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMana: {fileID: 5789458155175547668}
+  cursorManager: {fileID: 0}
+  castPoint: {fileID: 4278916805115688}
+  fireball: {fileID: 2420368914244221880, guid: 8ae2434c24e0a2849aae40ed5ae2845e, type: 3}
+--- !u!114 &5789458155175547668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644408783840310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853b3f70b3b38fc4682f487334a4980c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 100
+  currentMana: 100
 --- !u!1 &1651103941662380
 GameObject:
   m_ObjectHideFlags: 0

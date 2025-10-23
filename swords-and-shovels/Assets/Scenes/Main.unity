@@ -753,6 +753,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6417512160408342621, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
+      propertyPath: playerBehavior
+      value: 
+      objectReference: {fileID: 1433459093}
     - target: {fileID: 7311873824424524030, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -797,17 +801,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 8964092056599440032, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8964092056599440032, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1984346653}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
 --- !u!4 &603787762 stripped
 Transform:
@@ -1791,24 +1788,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1984346648 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8964092056599440032, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
-  m_PrefabInstance: {fileID: 599861662}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1984346653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984346648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d507cde4a91b1604292d1ac6c6863c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBehavior: {fileID: 1433459093}
 --- !u!1001 &2097070135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1861,6 +1840,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1509136838308636951, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
+      propertyPath: cursorManager
+      value: 
+      objectReference: {fileID: 1939625182}
     - target: {fileID: 1551492257885445192, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
       propertyPath: door1
       value: 
