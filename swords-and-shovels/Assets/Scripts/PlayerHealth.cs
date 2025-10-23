@@ -17,5 +17,6 @@ public class PlayerHealth : LivingEntity
         if (isDead) return;
 
         base.Ondamage(damage, hitPosition);
+        DamagePopupManager.Instance.ShowDamage(hitPosition, Mathf.FloorToInt(damage));
     }
 }
