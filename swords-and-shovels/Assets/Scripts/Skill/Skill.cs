@@ -7,13 +7,16 @@ using System.Threading;
 public class Skill : MonoBehaviour, ISkill
 {
     [SerializeField] private float defaultCooldown = 0f;
-    [SerializeField] private Image cooldownFill;
+    private Image cooldownFill;
 
     private DateTime readyAtUtc = DateTime.MinValue;
     private CancellationTokenSource cdCts;
 
     public bool IsReady => DateTime.UtcNow >= readyAtUtc;
     public float CooldownRemain => (float)Math.Max(0, (readyAtUtc - DateTime.UtcNow).TotalSeconds);
+
+    private float lastCooldownDuration;
+    public float LastCooldownDuration => lastCooldownDuration;
 
     private void Awake() => ResetState();
 
@@ -24,11 +27,12 @@ public class Skill : MonoBehaviour, ISkill
         return true;
     }
 
-    public virtual bool OnCast(Mana mana, Vector3 target) => true;
+    public virtual bool OnCast(Mana mana, Vector3 target, Vector3 castPoint) => true;
 
     protected void StartCooldown(float cd)
     {
         float useCd = cd > 0f ? cd : defaultCooldown;
+        lastCooldownDuration = useCd;
         readyAtUtc = (useCd <= 0f) ? DateTime.UtcNow : DateTime.UtcNow.AddSeconds(useCd);
 
         cdCts?.Cancel();

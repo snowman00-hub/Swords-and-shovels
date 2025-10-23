@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public abstract class SkillHeaderData : ScriptableObject
 {
     [Header("Identity")]

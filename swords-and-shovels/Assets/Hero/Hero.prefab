@@ -254,8 +254,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMana: {fileID: 5789458155175547668}
   cursorManager: {fileID: 0}
-  castPoint: {fileID: 4278916805115688}
-  fireball: {fileID: 2420368914244221880, guid: 8ae2434c24e0a2849aae40ed5ae2845e, type: 3}
+  castPoint: {fileID: 4621171860792138}
+  meteor: {fileID: 2420368914244221880, guid: 8ae2434c24e0a2849aae40ed5ae2845e, type: 3}
+  sharks: {fileID: 959671370445950753, guid: 4a4ecacb046af404caf76aa6fe585a15, type: 3}
+  sword: {fileID: 2653990061077372948, guid: 333b41bdb3b1a3943a95d35e541fca4b, type: 3}
+  heal: {fileID: -3882045873482545321, guid: a85699d91a3329f49a87bc88a6ad8379, type: 3}
+  manaHeal: {fileID: 6519399639488760392, guid: 4c0b16aa06730fb4cb1585e7aa944780, type: 3}
 --- !u!114 &5789458155175547668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMana: 100
   currentMana: 100
+  ManaSlider: {fileID: 0}
 --- !u!1 &1651103941662380
 GameObject:
   m_ObjectHideFlags: 0
