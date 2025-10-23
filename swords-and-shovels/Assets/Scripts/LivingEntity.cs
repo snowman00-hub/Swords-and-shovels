@@ -19,7 +19,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
             currentHp = 0;
             gameObject.SetActive(false);            
             isDead = true;
-            VictoryDefeatManager.Instance.Defeat();
         }
     }
 

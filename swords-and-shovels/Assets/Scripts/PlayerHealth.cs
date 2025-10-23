@@ -14,9 +14,13 @@ public class PlayerHealth : LivingEntity
 
     public override void OnDamage(float damage, Vector3 hitPosition)
     {
-        if (isDead) return;
+        if (isDead)
+            return;
 
         base.OnDamage(damage, hitPosition);
-		DamagePopupManager.Instance.ShowDamage(hitPosition, Mathf.FloorToInt(damage));
+
+        if(currentHp == 0)
+            VictoryDefeatManager.Instance.Defeat();
+        DamagePopupManager.Instance.ShowDamage(hitPosition, Mathf.FloorToInt(damage));
     }
 }

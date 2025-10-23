@@ -60,7 +60,7 @@ public class BossMonster : MonoBehaviour
             timer = 0f;
             animator.SetTrigger("Attack");
             var playerhealth = player.GetComponent<PlayerHealth>();
-            playerhealth.Ondamage(damage, player.position);
+            playerhealth.OnDamage(damage, player.position);
         }
     }
 }
