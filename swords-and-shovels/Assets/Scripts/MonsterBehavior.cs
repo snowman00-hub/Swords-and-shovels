@@ -7,18 +7,26 @@ public class MonsterBehavior : MonoBehaviour
 {
     public readonly string playerTag = "Player";
 
-    [SerializeField] private PlayerHealth player;
+    private PlayerHealth player;
 
     private float attackPower = 10;
     private float attackInterval = 1f;
     private bool isInTrigger = false;
 
+
+    private void OnEnable()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerHealth>();
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
             isInTrigger = true;
-            AsyncAttack();
+            AsyncAttack().Forget();
         }
     }
 
@@ -37,7 +45,7 @@ public class MonsterBehavior : MonoBehaviour
 
     public void Hit()
     {
-        if (player != null)
+        if (player != null && !player.isDead)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

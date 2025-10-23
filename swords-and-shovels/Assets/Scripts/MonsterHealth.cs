@@ -10,6 +10,11 @@ public class MonsterHealth : LivingEntity
     {
         base.OnEnable();
         currentHp = monsterMaxHealth;
+
+        if (playerBehavior == null)
+        {
+            playerBehavior = FindObjectOfType<PlayerBehavior>();
+        }
         gameObject.SetActive(true);
     }
 
