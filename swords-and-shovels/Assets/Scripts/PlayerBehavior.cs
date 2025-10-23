@@ -18,7 +18,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isAttacked && isInTrigger)
+        if (Input.GetMouseButtonDown(1) && !isAttacked && isInTrigger && !monster.isDead)
         {
             AsyncAttack();
         }
@@ -44,30 +44,39 @@ public class PlayerBehavior : MonoBehaviour
             isInTrigger = false;
         }
     }
-
-    private void Attack(MonsterHealth monster, float damage, Vector3 hitPosition)
+    public void OnMonsterDead()
+    {
+        isInTrigger = false;
+        monster = null;
+    }
+    private void Attack()
     {
         animator.SetBool(attack, true);
-        monster.Ondamage(attackPower, hitPosition);
     }
     public void Hit()
     {
+        if(monster != null)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Vector3 hitPosition = transform.position;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                hitPosition = hit.point;
+            }
+            monster.Ondamage(attackPower, hitPosition);
+        }
     }
 
     private async UniTaskVoid AsyncAttack()
     {
-        isAttacked = true;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Vector3 hitPosition = transform.position;
+        isAttacked = true;      
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            hitPosition = hit.point;
-        }
+        Attack();
 
-        Attack(monster, attackPower, hitPosition);
         await AttackAnimationDelay();
+
         isAttacked = false;
     }
 
