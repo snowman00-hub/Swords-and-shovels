@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.CompilerServices; // UniTask »ç¿ëÀ» À§ÇÑ using¹®
+using Cysharp.Threading.Tasks.CompilerServices; // UniTask ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ usingï¿½ï¿½
 
 public class PlayerBehavior : MonoBehaviour
 {

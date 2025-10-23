@@ -5,11 +5,14 @@ public class PlayerHealth : LivingEntity
 {
     private float playerMaxHealth = 100f;
     private float playerMaxMp = 100f;
+    [SerializeField]public int playerdef = 5;
+
     protected override void OnEnable()
     {
         base.OnEnable();
         currentHp = playerMaxHealth;
         currentMp = playerMaxMp;
+        def = playerdef;
     }
 
     public override void OnDamage(float damage, Vector3 hitPosition)

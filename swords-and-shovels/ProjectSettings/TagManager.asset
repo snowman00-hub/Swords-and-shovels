@@ -6,7 +6,6 @@ TagManager:
   tags:
   - HardFloor
   - Doorway
-  - MONSTER
   - Obstacle
   - Monster
   - Character
@@ -17,7 +16,7 @@ TagManager:
   - Monster
   - Water
   - UI
-  - 
+  - Character
   - 
   - 
   - 
