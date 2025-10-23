@@ -880,103 +880,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7989840460008660657, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
+      propertyPath: monster
+      value: 
+      objectReference: {fileID: 939931713}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1644408783840310, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2097070137}
-    - targetCorrespondingSourceObject: {fileID: 1644408783840310, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2097070138}
-    - targetCorrespondingSourceObject: {fileID: 1644408783840310, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2097070139}
-    - targetCorrespondingSourceObject: {fileID: 1644408783840310, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2097070140}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
---- !u!1 &2097070136 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1644408783840310, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
-  m_PrefabInstance: {fileID: 2097070135}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2097070137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097070136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 132d817ccd0bced4ab634be062c895b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2097070138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097070136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 220fab747ffd2f245a977753ad93670d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monster: {fileID: 939931713}
---- !u!54 &2097070139
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097070136}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!136 &2097070140
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097070136}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.9
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.96, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
