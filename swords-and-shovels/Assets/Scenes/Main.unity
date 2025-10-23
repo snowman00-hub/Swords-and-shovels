@@ -849,40 +849,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!1 &1194638095 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1644408783840310, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
-  m_PrefabInstance: {fileID: 2097070135}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1194638098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194638095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6855345a0d4412947a075d90e0d30cf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMana: 0
-  skillDamage: 0
-  cooldown: 0
-  range: 0
-  requiredMana: 0
-  duration: 0
-  skillDamageBuff: 0
-  defenseBuff: 0
-  addHp: 0
-  addMana: 0
-  meditation: 0
-  useSkillDamageBuff: 0
-  useDefenseBuff: 0
-  skillDamageBuffDuration: 0
-  defenseBuffDuration: 0
-  meditationDuration: 0
-  warning: {fileID: 0}
 --- !u!1 &1437442453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,10 +1178,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1644408783840310, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1194638098}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd51aa0141228c3478f60d3fe5ba00eb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

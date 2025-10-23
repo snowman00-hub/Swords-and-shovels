@@ -3,6 +3,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SkillId
+{ 
+    Fireball,
+
+}
+
 public class Skill : MonoBehaviour
 {
     //player Mana
@@ -12,7 +18,6 @@ public class Skill : MonoBehaviour
     public int skillDamage;
     public float cooldown;
     public float range;
-    public float requiredMana;
     public float duration;
 
     //attbuff, defbuff, healbuff, meditation, duration
@@ -42,7 +47,6 @@ public class Skill : MonoBehaviour
         skillDamage = 0;
         cooldown = 0;
         range = 0;
-        requiredMana = 0;
         duration = 0;
 
         skillDamageBuff = 0;
@@ -63,6 +67,7 @@ public class Skill : MonoBehaviour
 
     private void Update()
     {
+        //test
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             UseAttackBuff();
@@ -72,44 +77,46 @@ public class Skill : MonoBehaviour
             UseDefenceBuff();
         }
 
+
         UpdateBuffTimer();
     }
     public void UseAttackBuff()
     {
-        requiredMana = 10;
-
-
-        if(playerMana < requiredMana)
-        {
-            warning.text = "스킬 사용에 마나가 부족합니다.";
-        }
-        
         if (useSkillDamageBuff)
+            return;
+
+        useSkillDamageBuff = true;
+
         skillDamageBuff = 50;
 
-        skillDamageBuffDuration += 3;
-
-
+        skillDamageBuffDuration = 15;
 
         Debug.Log($"dmgduration{skillDamageBuffDuration} / dmg{skillDamageBuff}");
     }
+
     public void UseDefenceBuff()
     {
-        //Player?Hero add Def
+        //Player add Def
+        if (useDefenseBuff)
+            return;
+
+        useDefenseBuff = true;
+
         defenseBuff = 10;
 
-        defenseBuffDuration += 3;
-        requiredMana = 10;
+        defenseBuffDuration = 12;
 
         Debug.Log($"defduration{defenseBuffDuration} / def{skillDamageBuff}");
     }
+
     public void UseHeal()
     {
+
         addHp = 30;
-        requiredMana = 20;
 
         //Add player hp += currenthp + heal;
     }
+
     public void UseMeditation()
     {
         if (meditation)
@@ -132,6 +139,7 @@ public class Skill : MonoBehaviour
             {
                 skillDamageBuffDuration = 0;
                 skillDamageBuff = 0;
+                useSkillDamageBuff = false;
                 Debug.Log($"dmgduration{skillDamageBuffDuration} / dmg{skillDamageBuff}");
             }
         }
@@ -142,6 +150,7 @@ public class Skill : MonoBehaviour
             {
                 defenseBuffDuration = 0;
                 defenseBuff = 0;
+                useDefenseBuff = false;
                 Debug.Log($"dmgduration{defenseBuffDuration} / dmg{defenseBuff}");
             }
         }
@@ -153,7 +162,6 @@ public class Skill : MonoBehaviour
         skillDamage = 50 + skillDamageBuff;
         cooldown = 10f;
         range = 10f;
-        requiredMana = 40f;
 
         Physics.OverlapSphere(pos, range);
     }
