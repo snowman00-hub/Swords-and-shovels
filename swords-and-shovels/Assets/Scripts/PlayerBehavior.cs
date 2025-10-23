@@ -13,11 +13,15 @@ public class PlayerBehavior : MonoBehaviour
 
     private float attackPower = 10;
     private bool isAttacked = false;
+    private bool isInTrigger = false;
     private Animator animator;
 
     private void Update()
     {
-
+        if (Input.GetMouseButtonDown(0) && !isAttacked && isInTrigger)
+        {
+            AsyncAttack();
+        }
     }
 
     private void Awake()
@@ -29,10 +33,15 @@ public class PlayerBehavior : MonoBehaviour
     {
         if(other.CompareTag(monsterTag))
         {
-            if (Input.GetMouseButtonDown(0) && !isAttacked)
-            {
-                AsyncAttack();
-            }
+            isInTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(monsterTag))
+        {
+            isInTrigger = false;
         }
     }
 
