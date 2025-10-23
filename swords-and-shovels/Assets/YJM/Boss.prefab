@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7311873824424524030}
   - component: {fileID: 3388288860340110287}
+  - component: {fileID: 2953304497867238397}
   - component: {fileID: 4216024726778522077}
   m_Layer: 0
   m_Name: Boss
@@ -56,6 +57,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &2953304497867238397
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964092056599440032}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &4216024726778522077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,8 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d88f69bfc3a3334f91e9e1edce3e41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 30
   moveStartDistance: 5
-  stopDistance: 2
+  stopDistance: 2.3
+  attackInterval: 2
 --- !u!1001 &5693740888554309181
 PrefabInstance:
   m_ObjectHideFlags: 0
