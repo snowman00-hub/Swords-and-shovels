@@ -677,6 +677,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1517014637645888737, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
+      propertyPath: playerBehavior
+      value: 
+      objectReference: {fileID: 1433459093}
+    - target: {fileID: 1517014637645888737, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
+      propertyPath: monsterMaxHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6417512160408342621, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
       propertyPath: playerBehavior
       value: 
@@ -724,6 +732,10 @@ PrefabInstance:
     - target: {fileID: 8964092056599440032, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964092056599440032, guid: f05b83f6cecc02445931009ed923bd90, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

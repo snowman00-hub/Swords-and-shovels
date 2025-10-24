@@ -4,7 +4,7 @@ public class MonsterHealth : LivingEntity
 {
     [SerializeField] private PlayerBehavior playerBehavior;
 
-    private float monsterMaxHealth = 30f;
+    [SerializeField] private float monsterMaxHealth = 30f;
 
     protected override void OnEnable()
     {
